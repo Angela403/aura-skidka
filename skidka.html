@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aura by Angel — скидка 10% · Story 1080×1920</title>
+
+<style>
+  @font-face {
+    font-family: 'MiamaNueva';
+    src: local('Miama Nueva'), local('MiamaNueva'),
+         url('fonts/MiamaNueva.woff2') format('woff2');
+    font-weight: normal; font-style: normal; font-display: block;
+  }
+  @font-face {
+    font-family: 'SnellRoundhand';
+    src: local('Snell Roundhand'), local('SnellRoundhand'),
+         url('fonts/snell-roundhand-3.woff2') format('woff2');
+    font-weight: normal; font-style: normal; font-display: block;
+  }
+  @font-face {
+    font-family: 'Gilroy';
+    src: local('Gilroy-Light'), local('Gilroy Light'),
+         local('Gilroy-UltraLight'), local('Gilroy UltraLight'),
+         url('fonts/gilroy-light.woff2') format('woff2');
+    font-weight: 300; font-style: normal; font-display: swap;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    background: #1a0a0c;
+    font-family: 'Gilroy', -apple-system, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ═══════════ СЦЕНА ═══════════ */
+  .stage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ═══════════ КАРТОЧКА 1080×1920 ═══════════ */
+  #card {
+    width: 1080px;
+    height: 1920px;
+    background: #310E12;
+    color: #F5EDE0;
+    padding: 140px 110px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transform-origin: center center;
+    box-shadow: none;
+  }
+
+  .stage:not(.exporting) #card {
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Тонкая рамка по периметру */
+  .card-frame {
+    position: absolute;
+    top: 56px;
+    right: 56px;
+    bottom: 56px;
+    left: 56px;
+    border: 2px solid rgba(245, 237, 224, 0.14);
+    border-radius: 30px;
+    pointer-events: none;
+    box-sizing: border-box;
+  }
+
+  /* ─── Верх (шапка) ─── */
+  .top {
+    text-align: center;
+    padding-top: 100px;
+    margin-bottom: 110px;
+  }
+
+  .brand {
+    font-family: 'SnellRoundhand', cursive;
+    font-size: 136px;
+    line-height: 1;
+    color: #F5EDE0;
+    margin-bottom: 24px;
+  }
+
+  .tagline {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: #8A6068;
+  }
+
+  /* ─── Hero: −10% и подпись ─── */
+  .hero {
+    text-align: center;
+    margin-bottom: 90px;
+  }
+
+  .percent {
+    font-family: 'SnellRoundhand', cursive;
+    font-weight: normal;
+    font-size: 320px;
+    line-height: 0.9;
+    color: #F5EDE0;
+    margin-bottom: 30px;
+  }
+
+  .subtitle {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 300;
+    font-size: 26px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: #8A6068;
+  }
+
+  /* ─── Основной текст ─── */
+  .lead {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 1.6;
+    text-align: center;
+    color: rgba(245, 237, 224, 0.82);
+    max-width: 800px;
+    margin: 0 auto 100px;
+  }
+
+  /* ─── Условия ─── */
+  .terms {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    max-width: 760px;
+    margin: 0 auto 80px;
+  }
+
+  .term {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 20px;
+    align-items: baseline;
+  }
+
+  .term__mark {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 20px;
+    color: #8A6068;
+    text-align: center;
+  }
+
+  .term__text {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 1.5;
+    color: rgba(245, 237, 224, 0.92);
+  }
+
+  /* ─── Подвал ─── */
+  .footer {
+    margin-top: auto;
+    padding-bottom: 100px;
+    text-align: center;
+  }
+
+  .footer__note {
+    font-family: 'SnellRoundhand', cursive;
+    font-weight: normal;
+    font-size: 44px;
+    color: #F5EDE0;
+    margin-bottom: 20px;
+  }
+
+  .footer__contact {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: #8A6068;
+  }
+
+  /* ═══════════ КНОПКА ═══════════ */
+  .save-btn {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    background: #F5EDE0;
+    color: #310E12;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 999px;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .save-btn:hover { transform: translateX(-50%) translateY(-3px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); }
+  .save-btn:active { transform: translateX(-50%) translateY(0); }
+
+  .hint {
+    position: fixed;
+    bottom: 92px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    font-family: 'Gilroy', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245, 237, 224, 0.6);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 720px) {
+    .hint { font-size: 10px; letter-spacing: 0.14em; }
+    .save-btn { padding: 14px 32px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div id="card">
+
+    <div class="card-frame"></div>
+
+    <div class="top">
+      <div class="brand">Aura by Angel</div>
+      <div class="tagline">Ювелирные украшения</div>
+    </div>
+
+    <div class="hero">
+      <div class="percent">−10%</div>
+      <div class="subtitle">Небольшой подарок от нас</div>
+    </div>
+
+    <p class="lead">
+      Мы отбираем украшения вручную и отправляем по всей России. Чтобы вам было проще познакомиться с Aura by Angel — дарим скидку 10% на первый заказ.<br><br>
+      Напишите нам в Telegram или WhatsApp.
+    </p>
+
+    <div class="terms">
+      <div class="term">
+        <span class="term__mark">◆</span>
+        <span class="term__text">Только на первый заказ</span>
+      </div>
+      <div class="term">
+        <span class="term__mark">◆</span>
+        <span class="term__text">Действует бессрочно</span>
+      </div>
+      <div class="term">
+        <span class="term__mark">◆</span>
+        <span class="term__text">Не суммируется с другими скидками</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer__note">Первый заказ · −10%</div>
+      <div class="footer__contact">Aura by Angel · Майкоп</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="hint">Долгое нажатие на карточку — сохранить как изображение</div>
+<button class="save-btn" id="saveBtn">Сохранить в галерею</button>
+
+<!-- Библиотека html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+  const card = document.getElementById('card');
+  const stage = document.querySelector('.stage');
+  const saveBtn = document.getElementById('saveBtn');
+
+  function fitCard() {
+    const stageW = stage.clientWidth;
+    const stageH = stage.clientHeight;
+    const scaleX = stageW / 1080;
+    const scaleY = stageH / 1920;
+    const scale = Math.min(scaleX, scaleY) * 0.94;
+    card.style.transform = `scale(${scale})`;
+  }
+
+  fitCard();
+  window.addEventListener('resize', fitCard);
+
+  let exporting = false;
+
+  async function exportToPng() {
+    if (exporting) return;
+    exporting = true;
+
+    const originalTransform = card.style.transform;
+    card.style.transform = 'scale(1)';
+    stage.classList.add('exporting');
+
+    try {
+      const canvas = await html2canvas(card, {
+        width: 1080,
+        height: 1920,
+        scale: 1,
+        useCORS: true,
+        backgroundColor: '#310E12',
+        logging: false,
+        windowWidth: 1080,
+        windowHeight: 1920,
+        scrollX: 0,
+        scrollY: 0,
+        allowTaint: false,
+        removeContainer: true,
+        x: 0,
+        y: 0
+      });
+
+      const dataUrl = canvas.toDataURL('image/png');
+
+      if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        const w = window.open('');
+        if (w) {
+          w.document.write(`<img src="${dataUrl}" style="width:100%;display:block" alt="Скидка 10%"/>`);
+          w.document.title = 'Скидка 10% — сохраните через долгое нажатие';
+          w.document.body.style.margin = '0';
+          w.document.body.style.background = '#1a0a0c';
+        } else {
+          downloadPng(dataUrl);
+        }
+      } else {
+        downloadPng(dataUrl);
+      }
+    } catch (e) {
+      console.error('Ошибка экспорта:', e);
+      alert('Не удалось создать изображение. Попробуйте ещё раз.');
+    } finally {
+      card.style.transform = originalTransform;
+      stage.classList.remove('exporting');
+      exporting = false;
+    }
+  }
+
+  function downloadPng(dataUrl) {
+    const link = document.createElement('a');
+    link.download = 'aura-angel-скидка-1080x1920.png';
+    link.href = dataUrl;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  saveBtn.addEventListener('click', exportToPng);
+
+  let longPressTimer = null;
+
+  function startLongPress() {
+    longPressTimer = setTimeout(() => {
+      exportToPng();
+    }, 600);
+  }
+
+  function cancelLongPress() {
+    if (longPressTimer) {
+      clearTimeout(longPressTimer);
+      longPressTimer = null;
+    }
+  }
+
+  card.addEventListener('mousedown', startLongPress);
+  card.addEventListener('touchstart', startLongPress, { passive: true });
+  card.addEventListener('mouseup', cancelLongPress);
+  card.addEventListener('mouseleave', cancelLongPress);
+  card.addEventListener('touchend', cancelLongPress);
+  card.addEventListener('touchcancel', cancelLongPress);
+  card.addEventListener('touchmove', cancelLongPress);
+
+  card.addEventListener('contextmenu', e => e.preventDefault());
+</script>
+
+</body>
+</html>
