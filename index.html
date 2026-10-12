@@ -7,12 +7,6 @@
 
 <style>
   @font-face {
-    font-family: 'MiamaNueva';
-    src: local('Miama Nueva'), local('MiamaNueva'),
-         url('fonts/MiamaNueva.woff2') format('woff2');
-    font-weight: normal; font-style: normal; font-display: block;
-  }
-  @font-face {
     font-family: 'SnellRoundhand';
     src: local('Snell Roundhand'), local('SnellRoundhand'),
          url('fonts/snell-roundhand-3.woff2') format('woff2');
@@ -25,6 +19,13 @@
          url('fonts/gilroy-light.woff2') format('woff2');
     font-weight: 300; font-style: normal; font-display: swap;
   }
+  @font-face {
+    font-family: 'Gilroy';
+    src: local('Gilroy-Regular'), local('Gilroy Regular'),
+         local('Gilroy-Medium'), local('Gilroy Medium'),
+         url('fonts/gilroy-light.woff2') format('woff2');
+    font-weight: 500; font-style: normal; font-display: swap;
+  }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -36,7 +37,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ═══════════ СЦЕНА ═══════════ */
   .stage {
     width: 100vw;
     height: 100vh;
@@ -47,7 +47,6 @@
     position: relative;
   }
 
-  /* ═══════════ КАРТОЧКА 1080×1920 ═══════════ */
   #card {
     width: 1080px;
     height: 1920px;
@@ -65,32 +64,28 @@
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
   }
 
-  /* Тонкая рамка по периметру */
   .card-frame {
     position: absolute;
-    top: 56px;
-    right: 56px;
-    bottom: 56px;
-    left: 56px;
+    top: 56px; right: 56px; bottom: 56px; left: 56px;
     border: 2px solid rgba(245, 237, 224, 0.14);
     border-radius: 30px;
     pointer-events: none;
     box-sizing: border-box;
   }
 
-  /* ─── Верх (шапка) ─── */
+  /* ─── Верх ─── */
   .top {
     text-align: center;
-    padding-top: 100px;
-    margin-bottom: 110px;
+    padding-top: 60px;
+    margin-bottom: 70px;
   }
 
   .brand {
     font-family: 'SnellRoundhand', cursive;
-    font-size: 136px;
+    font-size: 120px;
     line-height: 1;
     color: #F5EDE0;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   .tagline {
@@ -101,25 +96,25 @@
     color: #8A6068;
   }
 
-  /* ─── Hero: −10% и подпись ─── */
+  /* ─── Большая скидка ─── */
   .hero {
     text-align: center;
-    margin-bottom: 90px;
+    margin-bottom: 60px;
   }
 
   .percent {
     font-family: 'SnellRoundhand', cursive;
     font-weight: normal;
-    font-size: 320px;
+    font-size: 300px;
     line-height: 0.9;
     color: #F5EDE0;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
   }
 
   .subtitle {
     font-family: 'Gilroy', sans-serif;
     font-weight: 300;
-    font-size: 26px;
+    font-size: 24px;
     letter-spacing: 0.36em;
     text-transform: uppercase;
     color: #8A6068;
@@ -129,12 +124,12 @@
   .lead {
     font-family: 'Gilroy', sans-serif;
     font-weight: 300;
-    font-size: 30px;
+    font-size: 27px;
     line-height: 1.6;
     text-align: center;
     color: rgba(245, 237, 224, 0.82);
     max-width: 800px;
-    margin: 0 auto 100px;
+    margin: 0 auto 70px;
   }
 
   /* ─── Условия ─── */
@@ -163,36 +158,38 @@
   .term__text {
     font-family: 'Gilroy', sans-serif;
     font-weight: 300;
-    font-size: 26px;
+    font-size: 24px;
     line-height: 1.5;
     color: rgba(245, 237, 224, 0.92);
   }
 
   /* ─── Подвал ─── */
-  .footer {
-    margin-top: auto;
-    padding-bottom: 100px;
+  .final {
     text-align: center;
+    border-top: 1px solid rgba(245, 237, 224, 0.16);
+    padding-top: 40px;
+    padding-bottom: 80px;
+    margin-top: auto;
   }
 
-  .footer__note {
+  .final__msg {
     font-family: 'SnellRoundhand', cursive;
-    font-weight: normal;
-    font-size: 44px;
+    font-size: 42px;
     color: #F5EDE0;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    line-height: 1.2;
   }
 
-  .footer__contact {
+  .final__contact {
     font-family: 'Gilroy', sans-serif;
     font-weight: 300;
-    font-size: 20px;
-    letter-spacing: 0.36em;
+    font-size: 18px;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
     color: #8A6068;
   }
 
-  /* ═══════════ КНОПКА ═══════════ */
+  /* ─── Кнопка ─── */
   .save-btn {
     position: fixed;
     bottom: 28px;
@@ -206,7 +203,7 @@
     border-radius: 999px;
     font-family: 'Gilroy', sans-serif;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     cursor: pointer;
@@ -247,7 +244,7 @@
 
     <div class="top">
       <div class="brand">Aura by Angel</div>
-      <div class="tagline">Ювелирные украшения</div>
+      <div class="tagline">Украшения и аксессуары</div>
     </div>
 
     <div class="hero">
@@ -256,8 +253,9 @@
     </div>
 
     <p class="lead">
-      Мы отбираем украшения вручную и отправляем по всей России. Чтобы вам было проще познакомиться с Aura by Angel — дарим скидку 10% на первый заказ<br><br>
-      Напишите нам в Telegram или WhatsApp
+      Украшения, сумки, кошельки, часы, картхолдеры и другие аксессуары — отбираю лично.<br><br>
+      Чтобы вам было проще познакомиться с Aura by Angel — дарим скидку 10% на первый заказ.<br><br>
+      Напишите в Telegram, чтобы оформить.
     </p>
 
     <div class="terms">
@@ -275,9 +273,9 @@
       </div>
     </div>
 
-    <div class="footer">
-      <div class="footer__note">Первый заказ  −10%</div>
-      <div class="footer__contact">Aura by Angel · Майкоп</div>
+    <div class="final">
+      <div class="final__msg">Первый заказ · −10%</div>
+      <div class="final__contact">Aura by Angel · украшения и аксессуары</div>
     </div>
 
   </div>
@@ -286,7 +284,6 @@
 <div class="hint">Долгое нажатие на карточку — сохранить как изображение</div>
 <button class="save-btn" id="saveBtn">Сохранить в галерею</button>
 
-<!-- Библиотека html2canvas -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script>
@@ -340,7 +337,7 @@
         const w = window.open('');
         if (w) {
           w.document.write(`<img src="${dataUrl}" style="width:100%;display:block" alt="Скидка 10%"/>`);
-          w.document.title = 'Скидка 10% — сохраните через долгое нажатие';
+          w.document.title = 'Сохраните через долгое нажатие';
           w.document.body.style.margin = '0';
           w.document.body.style.background = '#1a0a0c';
         } else {
